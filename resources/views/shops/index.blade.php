@@ -9,17 +9,9 @@
                 <li>
                     <select id="shop_id" name="prefectures">
                         <option hidden>All area</option>
-                        @foreach ($shops as $shop)
+                        @foreach ($areas->unique('area') as $area)
                             {
-                            @if ($loop->index == 1)
-                                <option value="{{ $shop->shop_id }}">{{ $shop->prefectures }}</option>
-                            @endif
-                            @if ($loop->index == 2)
-                                <option value="{{ $shop->shop_id }}">{{ $shop->prefectures }}</option>
-                            @endif
-                            @if ($loop->index == 3)
-                                <option value="{{ $shop->shop_id }}">{{ $shop->prefectures }}</option>
-                            @endif
+                                <option value="{{ $area->shop_id }}">{{ $area->area }}</option>
                         @endforeach
                         }
                     </select>
@@ -28,11 +20,9 @@
                 <li>
                     <select id="food" name="food">
                         <option value="hidden">All genre</option>
-                        <option value="1">寿司</option>
-                        <option value="2">焼肉</option>
-                        <option value="3">居酒屋</option>
-                        <option value="4">イタリアン</option>
-                        <option value="5">ラーメン</option>
+                        @foreach($genres->unique('genre') as $genre)
+                        <option value="{{ $genre->shop_id }}">{{ $genre->genre}}</option>
+                        @endforeach
                     </select>
                 </li>
                 <div class="search_box">
@@ -50,9 +40,9 @@
         <div class="shop_box">
             <img src="{{asset('storage/images/'.$shop->image)}}">
             <h3>{{ $shop->shop_name }}</h3>
-            <li>#{{ $shop->prefectures }}
-                #{{ $shop->food }}</li>
+            <li>#{{ $area->area }}
+                #{{ $genre->genre }}</li>
             <p><button class="shop_detail">詳しく見る</button></p>
         </div>
-    @endforeach
+         @endforeach
 @endsection

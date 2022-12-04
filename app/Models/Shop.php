@@ -12,16 +12,13 @@ class Shop extends Model
 
     protected $fillable = [
         'shop_name',
-        'user_id',
-        'prefectures',
-        'food',
         'store_overview',
         'image',
     ];
 
     protected $guarded = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function users()

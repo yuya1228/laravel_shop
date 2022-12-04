@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
-            $table->id('shop_id');
-            $table->string('shop_name',225)->nullable(false);
-            $table->text('store_overview')->nullable(false);
-            $table->string('image')->nullable(false);
+        Schema::create('areas', function (Blueprint $table) {
+            $table->id();
+            $table->string('area',20)->nullable(false);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('areas');
     }
 };

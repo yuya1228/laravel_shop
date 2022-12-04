@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
-            $table->id('shop_id');
-            $table->string('shop_name',225)->nullable(false);
-            $table->text('store_overview')->nullable(false);
-            $table->string('image')->nullable(false);
-            $table->timestamps();
+        Schema::create('likes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->unsignedBigInteger('shop_id')->nullable(false);
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('likes');
     }
 };
