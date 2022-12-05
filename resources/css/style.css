@@ -3,6 +3,13 @@ body {
     margin-left: 5%;
 }
 
+.icon::before {
+    font-family: "Font Awesome 5 Free";
+    /*←ココ！！！！！！！*/
+    font-weight: 900;
+    content: "\f007";
+}
+
 header {
     padding: 30px 4% 10px;
     width: 100%;
@@ -43,6 +50,15 @@ h3 {
     margin-left: 5%;
 }
 
+p {
+    display: inline-block;
+}
+
+.like_button {
+    margin-left: 20%;
+    display: inline-block;
+}
+
 .shop_box {
     border-width: 1px;
     border-style: solid;
@@ -53,7 +69,6 @@ h3 {
     margin: 1%;
 }
 
-img
- {
+img {
     width: 10%;
- }
+}

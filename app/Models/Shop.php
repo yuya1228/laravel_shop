@@ -25,4 +25,14 @@ class Shop extends Model
     {
         return $this -> belongsToMany(User::class);
     }
+
+    public function reserves()
+    {
+        return $this -> hasMany(Reserve::class);
+    }
+
+    public function likes()
+    {
+        return $this -> hasMany(Like::class);
+    }
 }

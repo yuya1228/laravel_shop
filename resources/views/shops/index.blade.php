@@ -42,7 +42,8 @@
             <h3>{{ $shop->shop_name }}</h3>
             <li>#{{ $area->area }}
                 #{{ $genre->genre }}</li>
-            <p><button class="shop_detail">詳しく見る</button></p>
+            <p class="shop_button"><button class="shop_detail">詳しく見る</button></p>
+            <p class="like_button"><i class="fa-duotone fa-heart"></i></p>
         </div>
-         @endforeach
+    @endforeach
 @endsection

@@ -16,6 +16,11 @@ class Like extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class,Shop::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function shops()
+    {
+        return $this->belongsTo(Shop::class);
     }
 }

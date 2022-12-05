@@ -16,6 +16,6 @@ class Reserve extends Model
 
     public function reserves()
     {
-        return $this->belongToMany(Reserve::class)->withPivot('reserve');
+        return $this->belongToMany(Reserve::class);
     }
 }
