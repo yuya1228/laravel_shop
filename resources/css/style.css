@@ -3,11 +3,44 @@ body {
     margin-left: 5%;
 }
 
-.icon::before {
-    font-family: "Font Awesome 5 Free";
-    /*←ココ！！！！！！！*/
-    font-weight: 900;
-    content: "\f007";
+
+.select_area {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.select_area select {
+    appearance: none;
+    width: 300px;
+    padding: 11px 15px;
+    padding-right: 1em;
+    border: none;
+    outline: 0;
+    background: #fff;
+    background-image: none;
+    box-shadow: none;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select_area::before {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-width: 10px 5px 0 5px;
+    border-style: solid;
+    border-color: #eee transparent transparent transparent;
+    content: "";
+    pointer-events: none;
 }
 
 header {
@@ -47,16 +80,6 @@ h3 {
     border-radius: 5px;
     font-size: 15px;
     padding: 1%;
-    margin-left: 5%;
-}
-
-p {
-    display: inline-block;
-}
-
-.like_button {
-    margin-left: 20%;
-    display: inline-block;
 }
 
 .shop_box {
@@ -67,8 +90,4 @@ p {
     display: inline-block;
     width: 20%;
     margin: 1%;
-}
-
-img {
-    width: 10%;
 }
