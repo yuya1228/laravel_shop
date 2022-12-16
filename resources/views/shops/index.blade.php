@@ -1,53 +1,55 @@
 @extends('layouts.layout')
 
 @section('shop_header')
-    <h1 class="shop_title">RESE</h1>
+ <a class="navbar-brand" style="text-decoration: none" href="{{ url('/') }}">
+   <h1 style="color: blue; font-weight:bold;">Rese</h1>
+</a>
 
     <div class="shop_search">
-        <nav>
-            <ul>
-                <li>
-                    <div class="select_area">
-                    <select id="shop_id" name="prefectures">
-                        <option hidden>All area</option>
-                        @foreach ($areas->unique('area') as $area)
-                            {
-                            <option value="{{ $area->shop_id }}">{{ $area->area }}</option>
-                        @endforeach
-                        }
-                    </select>
-                    </div>
-                </li>
-
-                <li>
-                    <select id="food" name="food">
-                        <option value="hidden">All genre</option>
-                        @foreach ($genres->unique('genre') as $genre)
-                            <option value="{{ $genre->shop_id }}">{{ $genre->genre }}</option>
-                        @endforeach
-                    </select>
-                </li>
-                <div class="search_box">
-                    <li>
-                        <input name="search" type="text" placeholder="Search..." />
-                    </li>
-                </div>
-            </ul>
-        </nav>
+        <form action="{{ route('shops.index') }}" method="GET">
+            @csrf
+            <table>
+                <tr>
+                    <td>
+                        <select class="area" name="areas">
+                            <option value="">All area</option>
+                            @foreach ($areas as $area)
+                                <option value="{{ $area->area }}">{{ $area->area }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <select class="genre" name="genres">
+                            <option value="">All genre</option>
+                            @foreach ($genres as $genre)
+                                <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </td>
+                    <td>
+                        <input name="shops" type="text" value="{{$shops}}" placeholder="Search..." />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 @endsection
 
 @section('shop_menu')
-    @foreach ($shops as $shop)
+    @foreach ($items as $item)
         <div class="shop_box">
-            <img src="{{ asset('storage/images/' . $shop->image) }}">
-            <h3>{{ $shop->shop_name }}</h3>
-            <li>#{{ $area->area }}
-                #{{ $genre->genre }}</li>
-            <div class="like_button">
-                <p class="shop_button"><button class="shop_detail">詳しく見る</button>
-                </p>
-                    <span><i class="fas fa-heart fa-2x colorchange" style="color:#808080"></i></span>
+            <img src="{{ asset('storage/images/' . $item->image) }}">
+            <h3>{{ $item->shop }}</h3>
+            <td>#{{ $item->area }}</td>
+            <td>#{{ $item->genre }}</td>
+            <div class="shop_button">
+                <a href="{{ route('shops.detail', $item->id) }}"><button class="shop_detail">詳しく見る</button></a>
+                <span class="like_button"><input id="heart_chk" class="heart_chk" type="checkbox">
+                    <label class="heart_label" for="heart_chk">
+                        <i class="fa-solid fa-heart"></i> </label></span>
             </div>
         </div>
     @endforeach

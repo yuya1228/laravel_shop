@@ -16,103 +16,28 @@ class GenreSeeder extends Seeder
     public function run()
     {
         Genre::create([
+            'id'=>'1',
             'genre'=>'寿司',
-            'shop_id'=>'1'
         ]);
 
         Genre::create([
+            'id' => '2',
             'genre' => '焼肉',
-            'shop_id'=>'2'
         ]);
 
         Genre::create([
+            'id' => '3',
             'genre' => '居酒屋',
-            'shop_id'=>'3'
         ]);
 
         Genre::create([
+            'id' => '4',
             'genre' => 'イタリアン',
-            'shop_id'=>'4'
         ]);
 
         Genre::create([
+            'id' => '5',
             'genre' => 'ラーメン',
-            'shop_id'=>'5'
-        ]);
-
-        Genre::create([
-            'genre' => '焼肉',
-            'shop_id'=>'6'
-        ]);
-
-        Genre::create([
-            'genre' => 'イタリアン',
-            'shop_id'=>'7'
-        ]);
-
-        Genre::create([
-            'genre' => 'ラーメン',
-            'shop_id'=>'8'
-        ]);
-
-        Genre::create([
-            'genre' => '居酒屋',
-            'shop_id'=>'9'
-        ]);
-
-        Genre::create([
-            'genre' => '寿司',
-            'shop_id'=>'10'
-        ]);
-
-        Genre::create([
-            'genre' => '焼肉',
-            'shop_id'=>'11'
-        ]);
-
-        Genre::create([
-            'genre' => '焼肉',
-            'shop_id'=>'12'
-        ]);
-
-        Genre::create([
-            'genre' => '居酒屋',
-            'shop_id'=>'13'
-        ]);
-
-        Genre::create([
-            'genre' => '寿司',
-            'shop_id'=>'14'
-        ]);
-
-        Genre::create([
-            'genre' => 'ラーメン',
-            'shop_id'=>'15'
-        ]);
-
-        Genre::create([
-            'genre' => '居酒屋',
-            'shop_id'=>'16'
-        ]);
-
-        Genre::create([
-            'genre' => '寿司',
-            'shop_id'=>'17'
-        ]);
-
-        Genre::create([
-            'genre' => '焼肉',
-            'shop_id'=>'18'
-        ]);
-
-        Genre::create([
-            'genre' => 'イタリアン',
-            'shop_id'=>'19'
-        ]);
-
-        Genre::create([
-            'genre' => '寿司',
-            'shop_id'=>'20'
         ]);
     }
 };

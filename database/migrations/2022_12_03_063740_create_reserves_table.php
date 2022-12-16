@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('reserves', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable(false);
-            $table->unsignedBigInteger('shop_id')->nullable(false);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('shop_id')->constrained('shops');
+            $table->dateTime('time_start');
+            $table->integer('sum_people');
+            $table->timestamps();
         });
     }
 

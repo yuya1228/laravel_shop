@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable(false);
-            $table->unsignedBigInteger('shop_id')->nullable(false);
+            $table->foreignId('user_id')->constrained('users')->nullable(false);
+            $table->foreignId('shop_id')->constrained('shops')->nullable(false);
         });
     }
 

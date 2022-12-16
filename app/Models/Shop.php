@@ -26,6 +26,16 @@ class Shop extends Model
         return $this -> belongsToMany(User::class);
     }
 
+    public function area()
+    {
+        return $this -> belongsTo(Area::class);
+    }
+
+    public function genre()
+    {
+        return $this ->belongsTo(Genre::class);
+    }
+
     public function reserves()
     {
         return $this -> hasMany(Reserve::class);

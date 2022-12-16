@@ -10,8 +10,6 @@ class Genre extends Model
     use HasFactory;
     protected $fillable = [
         'genre',
-        'created_at',
-        'updated_at'
     ];
 
     public function shops()

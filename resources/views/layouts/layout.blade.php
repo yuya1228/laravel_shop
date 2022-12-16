@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel_Shop</title>
     <link href="{{asset('/assets/css/style.css')}}" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c8e6f2d527.js" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/c8e6f2d527.js" crossorigin="anonymous"></script>
 </head>
 
 <header>
