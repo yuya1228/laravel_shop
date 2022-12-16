@@ -17,7 +17,7 @@ class ShopController extends Controller
     {
         $areas = $request->input('areas');
         $genres = $request->input('genres');
-        $shops = $request->input('shops');
+        $keyword = $request->input('keyword');
 
         $query = Shop::query();
 
@@ -25,22 +25,23 @@ class ShopController extends Controller
         ->join('genres','shops.genre_id','=','genres.id')->get();
 
         if(!empty($areas)){
-            $query->where('areas','LIKE','$areas');
+            $query->where('area','LIKE','$areas');
         }
 
         if(!empty($genres)){
-            $query->where('genres','LIKE','$genres');
+            $query->where('genre','LIKE','$genres');
         }
 
-        if(!empty($shops)){
-            $query->where('shop_name','LIKE',"%{{$shops}}%");
+        if(!empty($keyword)){
+            $query->where('shop_name','LIKE',"%{{$keyword}}%");
         }
 
-        $items = $query->get();
+        $items=$query->get();
 
+        $shops =Shop::all();
         $genres = Genre::all();
         $areas = Area::all();
-        return view('shops.index',compact('items','shops','genres','areas'));
+        return view('shops.index',compact('items','shops', 'keyword','genres','areas'));
     }
 
     public function find(Request $request)
@@ -50,6 +51,8 @@ class ShopController extends Controller
     public function detail($id)
     {
         $shops = Shop::find($id);
+        $shops->join('areas', 'shops.area_id', '=', 'areas.id')
+        ->join('genres', 'shops.genre_id', '=', 'genres.id')->get();
         $genres = Genre::find($id);
         $areas = Area::find($id);
         $reserves = Reserve::all();

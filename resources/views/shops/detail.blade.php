@@ -13,7 +13,7 @@
             </table>
             <img class="shop_image" src="{{ asset('storage/images/' . $shops->image) }}">
 
-            <p>#{{ $areas->area }}#{{ $genres->genre }}</p>
+            <p>#{{ $areas=->area }}#{{ $genres->genre }}</p>
             <p>{{ $shops->store_overview }}</p>
         </div>
 

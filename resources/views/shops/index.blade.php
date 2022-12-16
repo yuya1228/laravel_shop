@@ -30,7 +30,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </td>
                     <td>
-                        <input name="shops" type="text" value="{{$shops}}" placeholder="Search..." />
+                        <input name="keyword" type="text" value="{{$keyword}}" placeholder="Search..." />
                     </td>
                 </tr>
             </table>
@@ -42,7 +42,7 @@
     @foreach ($items as $item)
         <div class="shop_box">
             <img src="{{ asset('storage/images/' . $item->image) }}">
-            <h3>{{ $item->shop }}</h3>
+            <h3>{{ $item->shop_name }}</h3>
             <td>#{{ $item->area }}</td>
             <td>#{{ $item->genre }}</td>
             <div class="shop_button">
