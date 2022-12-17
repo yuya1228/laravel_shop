@@ -39,12 +39,14 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    public function reserves()
-    {
-        return $this -> hasMany(Reserve::class);
-    }
+
     public function likes()
     {
-        return $this -> hasMany(Like::class);
+        return $this -> hasMany('App\Models\Like');
+    }
+
+    public function shops()
+    {
+        return $this -> belongsToMany(Shop::class);
     }
 }

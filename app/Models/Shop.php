@@ -21,28 +21,14 @@ class Shop extends Model
         'updated_at',
     ];
 
-    public function users()
-    {
-        return $this -> belongsToMany(User::class);
-    }
-
-    public function area()
-    {
-        return $this -> belongsTo(Area::class);
-    }
-
-    public function genre()
-    {
-        return $this ->belongsTo(Genre::class);
-    }
-
-    public function reserves()
-    {
-        return $this -> hasMany(Reserve::class);
-    }
 
     public function likes()
     {
-        return $this -> hasMany(Like::class);
+        return $this -> hasMany('App\Models\Like');
+    }
+
+    public function users()
+    {
+        return $this -> belongsToMany(User::class);
     }
 }

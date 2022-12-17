@@ -13,7 +13,7 @@
             </table>
             <img class="shop_image" src="{{ asset('storage/images/' . $shops->image) }}">
 
-            <p>#{{ $areas=->area }}#{{ $genres->genre }}</p>
+            <p>#{{ $areas->area }}#{{ $genres->genre }}</p>
             <p>{{ $shops->store_overview }}</p>
         </div>
 
@@ -22,12 +22,13 @@
             <form action="{{ route('reserve.create') }}" method="POST">
                 @csrf
                 <ul>
-                    <li><input type="date" value="date" name="time_start"></li>
-                    <li><select name="time_start">
-                            <option value="{{ 'time_start' }}">時間</option>
-                        </select></li>
-                    <li><select name="sum_people">
-                            <option value="{{ 'sum_people' }}">1人</option>
+                    <li><input type="date" value="{{ $reserves->date_start }}" name="date_start"></li>
+                    <li><input type="time" value="{{ $reserves->time_start }}" name="time_start" style="width:90%; height:4%; margin-top:3%"></li>
+                    <li><select name="sum_people" value="{{$reserves->sum_people}}">
+                            <option value="1">1人</option>
+                            <option value="2">2人</option>
+                            <option value="3">3人</option>
+                            <option value="4">4人</option>
                         </select></li>
                 </ul>
                 <table class="reserve_information">
@@ -36,16 +37,16 @@
                         <td>{{ $shops->shop_name }}</td>
                     </tr>
                     <tr>
-                        <th>DATE</th>
-                        <td>日付</td>
+                        <th>Date</th>
+                        <td>{{ $reserves->date_start }}</td>
                     </tr>
                     <tr>
-                        <th>TIME</th>
-                        <td>時間</td>
+                        <th>Time</th>
+                        <td>{{ $reserves->time_start }}</td>
                     </tr>
                     <tr>
-                        <th>人数</th>
-                        <td>人数</td>
+                        <th>Number</th>
+                        <td>{{ $reserves->sum_people }}</td>
                     </tr>
                 </table>
                 <button class="reserve_start">

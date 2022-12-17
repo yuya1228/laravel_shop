@@ -13,7 +13,7 @@
                     <td>
                         <select class="area" name="areas">
                             <option value="">All area</option>
-                            @foreach ($areas as $area)
+                            @foreach ($areas->unique('area') as $area)
                                 <option value="{{ $area->area }}">{{ $area->area }}</option>
                             @endforeach
                         </select>
@@ -21,7 +21,7 @@
                     <td>
                         <select class="genre" name="genres">
                             <option value="">All genre</option>
-                            @foreach ($genres as $genre)
+                            @foreach ($genres->unique('genre') as $genre)
                                 <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
                             @endforeach
                         </select>

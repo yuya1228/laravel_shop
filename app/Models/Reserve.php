@@ -12,12 +12,18 @@ class Reserve extends Model
     protected $fillable = [
         'user_id',
         'shop_id',
+        'date_start',
         'time_start',
         'sum_people'
     ];
 
-    public function reserves()
+    public function shop()
     {
-        return $this->belongToMany(Reserve::class);
+        return $this->belongsToMany(Shop::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
