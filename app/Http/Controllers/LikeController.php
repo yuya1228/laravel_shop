@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Shop;
-use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    public function like(Shop $shops, Request $request)
+    public function _construct()
     {
-        $like=New Like();
-        $like->shop_id=$shops->id;
-        $like->user_id=Auth::user()->id;
-        $like->save();
-        return back();
+        $this->middleware(['auth','verified'])->only(['like','unlike']);
+    }
+    public function like($id)
+    {
+        Like::create([
+            'shop_id'=>$id,
+            'user_id'=>Auth::id(),
+        ]);
+
+        return redirect()->back;
     }
 
-    public function unlike(Shop $shops, Request $request)
+    public function unlike($id)
     {
-        $user=Auth::user()->id;
-        $like=Like::where('shop_id',$shops->id)->where('user_id',$user)->first();
+        $like = Like::where('shop_id',$id)->where('user_id',Auth::id())->first();
         $like->delete();
-        return back();
+
+        return redirect()->back();
     }
 }

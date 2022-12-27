@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
-@section('content')
+@section('shop_menu')
 
 <div class="thanks_message">
-<h3>会員登録ありがとうございます。</h3>
+<h2>会員登録ありがとうございます。</h2>
 
 <a href="{{url('/login')}} ">
     <button class="log_button">ログインする</button>

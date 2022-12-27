@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReserveRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
-use App\Models\Reserve;
-use App\Models\User;
-
-use Database\Seeders\DatabaseSeeder;
+use App\Models\Shop_user;
+use App\Models\Like;
 
 class ShopController extends Controller
 {
@@ -50,24 +49,46 @@ class ShopController extends Controller
         $shops = Shop::find($id);
         $genres = Genre::find($id);
         $areas = Area::find($id);
-        $reserves = Reserve::find($id);
-        return view('shops.detail',compact('shops','genres','areas','reserves'));
+        $shop_users = Shop_user::find($id);
+        return view('shops.detail',compact('shops','genres','areas','shop_users'));
     }
 
-    public function reserve(Request $request)
+    public function reserve(ReserveRequest $request)
     {
-
-        $reserves = New Reserve();
-        $reserves->user_id = Auth::id();
-        $reserves->date_start = $request->input('date_start');
-        $reserves->time_start = $request->input('time_start');
-        $reserves->sum_people = $request->input('sum_people');
-        $reserves->save();
+        $shop_users = New Shop_user();
+        $shop_users->user_id = Auth::id();
+        $shop_users->shop_id = $request->input('shop_id');
+        $shop_users->date_start = $request->input('date_start');
+        $shop_users->time_start = $request->input('time_start');
+        $shop_users->sum_people = $request->input('sum_people');
+        $shop_users->save();
         return redirect()->route('shops.done');
     }
 
     public function done()
     {
         return view('shops.done');
+    }
+
+    public function _construct()
+    {
+        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
+    }
+    public function like($id)
+    {
+        Like::create([
+            'shop_id' => $id,
+            'user_id' => Auth::id(),
+        ]);
+
+        return back();
+    }
+
+    public function unlike($id)
+    {
+        $like = Like::where('shop_id', $id)->where('user_id', Auth::id())->first();
+        $like->delete();
+
+        return back();
     }
 }

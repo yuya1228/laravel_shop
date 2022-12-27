@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'email_verified',
+        'email_verify_token',
     ];
 
     /**
@@ -40,13 +39,18 @@ class User extends Authenticatable
      * @var array<string, string>
      */
 
-    public function likes()
-    {
-        return $this -> hasMany('App\Models\Like');
-    }
-
     public function shops()
     {
-        return $this -> belongsToMany(Shop::class);
+        return $this -> hasMany(Shop::class);
+    }
+
+    public function shop_users()
+    {
+        return $this ->belongsToMany(Shop_user::class)->withTimestamps();
+    }
+
+    public function likes()
+    {
+        return $this ->belongsToMany(Like::class)->withTimestamps();
     }
 }

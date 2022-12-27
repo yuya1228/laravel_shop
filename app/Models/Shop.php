@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User;
 
 class Shop extends Model
 {
@@ -21,14 +21,18 @@ class Shop extends Model
         'updated_at',
     ];
 
-
-    public function likes()
-    {
-        return $this -> hasMany('App\Models\Like');
-    }
-
     public function users()
     {
-        return $this -> belongsToMany(User::class);
+        return $this -> hasMany(User::class);
+    }
+
+    public function Shop_users()
+    {
+        return $this->belongsToMany(Shop_user::class)->withTimestamps();
+    }
+
+    public function Likes()
+    {
+        return $this->belongsToMany(Like::class,'shop_id')->withTimestamps();
     }
 }

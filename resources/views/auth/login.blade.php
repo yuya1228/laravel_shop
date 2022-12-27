@@ -1,66 +1,42 @@
-@extends('layouts.app')
+<x-guest-layout>
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header" style="background-color: blue; color:white; height:55px; font-size:20px;">
-                        {{ __('Login') }}</div>
 
-                    <div class="card-body" style=" box-shadow: 5px 5px 5px rgb(196, 195, 195);">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end"><i
-                                        class="fa-solid fa-envelope"
-                                        style="font-size:25px;"></i></label>
-
-                                <div class="col-md-6" style="border-bottom: solid 0.5px black; ">
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror"
-                                        style="border: none; background:white;" name="email" placeholder="Email" value="{{ old('email') }}"
-                                        required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end"><i
-                                        class="fa-solid fa-lock"
-                                        style="font-size:25px;"></i></label>
-
-                                <div class="col-md-6" style="border-bottom: solid 0.5px black; width:60%;">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror"
-                                        style="border: none; background:white;" name="password" placeholder="Password" required
-                                        autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4" style="width: 100%">
-                                    <button type="submit" class="btn btn-primary" style="margin-left:40%;">
-                                        {{ __('ログイン') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <button type="button" class="menu-btn" style="background-color: blue">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="menu">
+      <div class="menu__item"><a href="{{ url('/') }}">HOME</a></div>
+      <div class="menu__item"><a href="{{url('/register')}}">Registration</a></div>
+      <div class="menu__item"><a href="{{ url('/login')}}">Login</a></div>
     </div>
-@endsection
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div style="border-bottom: solid 0.5px black;>
+            <x-input-label for="email" :value="__()" />
+        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" placeholder="&#xf0e0;  Email"
+            :value="old('email')" required autofocus style="border: none; font-family:FontAwesome;" />
+        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4" style="border-bottom: solid 0.5px black;">
+            <x-input-label for="password" :value="__()" />
+
+            <x-text-input id="password" class="block mt-1 w-full" placeholder="&#xf023;  Password" type="password"
+                name="password" required autocomplete="current-password"
+                style="border: none; font-family:FontAwesome;" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button class="ml-3" style="background-color:blue;">
+                {{ __('ログイン') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

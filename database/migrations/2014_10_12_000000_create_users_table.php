@@ -29,6 +29,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
-    }
+        Schema::dropIfExists('users',function (Blueprint $table){
+        $table->dropColumn('email_verified');
+        $table->dropColumn('email_verify_token');
+    });
+}
 };
