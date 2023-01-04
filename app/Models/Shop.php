@@ -21,18 +21,18 @@ class Shop extends Model
         'updated_at',
     ];
 
-    public function users()
-    {
-        return $this -> hasMany(User::class);
-    }
-
     public function Shop_users()
     {
         return $this->belongsToMany(Shop_user::class)->withTimestamps();
     }
 
-    public function Likes()
+    public function users()
     {
-        return $this->belongsToMany(Like::class,'shop_id')->withTimestamps();
+        return $this->belongsToMany(User::class,'likes','shop_id','user_id')->withTimestamps();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class,'shop_id');
     }
 }

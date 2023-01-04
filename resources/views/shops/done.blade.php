@@ -1,9 +1,10 @@
 @extends('layouts.layout')
 
+@section('shop_header')
+<h1 style="color: blue; font-weight:bold; font-size:40px; margin-left:10%;">Rese</h1>
+@endsection
+
 @section('shop_menu')
-<a class="navbar-brand" style="text-decoration: none" href="{{ url('/') }}">
-        <h1 style="color: blue; font-weight:bold;">Rese</h1>
-    </a>
 <div class="register_message">
 <h2>ご予約ありがとうございます。</h2>
 

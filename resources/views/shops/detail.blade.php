@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
-<a class="navbar-brand" style="text-decoration: none" href="{{ url('/') }}">
-        <h1 style="color: blue; font-weight:bold;">Rese</h1>
-    </a>
+@section('shop_header')
+    <h1 style="color: blue; font-weight:bold; font-size:40px; margin-left:10%;">Rese</h1>
+@endsection
 
 @section('shop_menu')
     <div class="detail_container">
@@ -33,13 +33,9 @@
                     @error('time_start')
                         <td>{{ $message }}</td>
                     @enderror
-                    <li><select value="{{ old('sum_people') }}" name="sum_people">
-                            <option value="hidden"></option>
-                            <option value="1">1人</option>
-                            <option value="2">2人</option>
-                            <option value="3">3人</option>
-                            <option value="4">4人</option>
-                        </select></li>
+                    <li>
+                        <input type="number" name="sum_people" , min="0" value="{{ old('sum_people') }}" placeholder="予約人数">
+                    </li>
                     @error('sum_people')
                         <td>{{ $message }}</td>
                     @enderror
@@ -63,7 +59,7 @@
                     </tr>
                 </table>
                 <input type="submit" class="reserve_start">
-                <input type="hidden" name="shop_id" value="{{$shop_users->shop_id}}">
+                <input type="hidden" name="shop_id" value="{{ $shop_users->shop_id }}">
             </form>
         </div>
     </div>

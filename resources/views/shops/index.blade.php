@@ -2,9 +2,8 @@
 
 @section('shop_header')
 
-    <a class="navbar-brand" style="text-decoration: none" href="{{ url('/') }}">
-        <h1 style="color: blue; font-weight:bold;">Rese</h1>
-    </a>
+ <h1 style="color: blue; font-weight:bold; font-size:40px; margin-left:10%;">Rese</h1>
+
     <div class="shop_search">
         <form action="{{ route('shops.index') }}" method="GET">
             @csrf
@@ -39,6 +38,7 @@
 @endsection
 
 @section('shop_menu')
+
     @foreach ($items as $item)
         <div class="shop_box">
             <img src="{{ asset('storage/images/' . $item->image) }}">

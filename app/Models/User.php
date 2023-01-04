@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -39,18 +40,13 @@ class User extends Authenticatable
      * @var array<string, string>
      */
 
-    public function shops()
-    {
-        return $this -> hasMany(Shop::class);
-    }
-
     public function shop_users()
     {
         return $this ->belongsToMany(Shop_user::class)->withTimestamps();
     }
 
-    public function likes()
+    public function shops()
     {
-        return $this ->belongsToMany(Like::class)->withTimestamps();
+        return $this ->belongsToMany(Shop::class,'likes','user_id','shop_id')->withTimestamps();
     }
 }

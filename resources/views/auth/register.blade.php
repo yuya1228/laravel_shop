@@ -1,13 +1,5 @@
 <x-guest-layout>
 
-    <button type="button" class="menu-btn" style="background-color: blue">
-      <i class="fa fa-bars" aria-hidden="true"></i>
-    </button>
-    <div class="menu">
-      <div class="menu__item"><a href="{{ url('/') }}">HOME</a></div>
-      <div class="menu__item"><a href="{{url('/register')}}">Registration</a></div>
-      <div class="menu__item"><a href="{{ url('/login')}}">Login</a></div>
-    </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <!-- Name -->

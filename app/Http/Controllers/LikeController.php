@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    public function _construct()
-    {
-        $this->middleware(['auth','verified'])->only(['like','unlike']);
-    }
     public function like($id)
     {
         Like::create([
@@ -19,7 +15,7 @@ class LikeController extends Controller
             'user_id'=>Auth::id(),
         ]);
 
-        return redirect()->back;
+        return redirect()->route('shops.index');
     }
 
     public function unlike($id)
@@ -27,6 +23,6 @@ class LikeController extends Controller
         $like = Like::where('shop_id',$id)->where('user_id',Auth::id())->first();
         $like->delete();
 
-        return redirect()->back();
+        return redirect()->route('shops.index');
     }
 }

@@ -9,7 +9,6 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Shop_user;
-use App\Models\Like;
 
 class ShopController extends Controller
 {
@@ -70,25 +69,4 @@ class ShopController extends Controller
         return view('shops.done');
     }
 
-    public function _construct()
-    {
-        $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
-    }
-    public function like($id)
-    {
-        Like::create([
-            'shop_id' => $id,
-            'user_id' => Auth::id(),
-        ]);
-
-        return back();
-    }
-
-    public function unlike($id)
-    {
-        $like = Like::where('shop_id', $id)->where('user_id', Auth::id())->first();
-        $like->delete();
-
-        return back();
-    }
 }

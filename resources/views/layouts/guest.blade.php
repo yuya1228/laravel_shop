@@ -18,7 +18,16 @@
     <script src="https://kit.fontawesome.com/c8e6f2d527.js" crossorigin="anonymous"></script>
 </head>
 <header style="margin-bottom: 5%;">
-    <h1 style="font-size: 300%; color: blue; font-weight:bold; ">Rese</h1>
+
+    <button type="button" class="menu-btn" style="background-color: blue">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="menu">
+      <div class="menu__item"><a href="{{ url('/') }}">HOME</a></div>
+      <div class="menu__item"><a href="{{url('/register')}}">Registration</a></div>
+      <div class="menu__item"><a href="{{ url('/login')}}">Login</a></div>
+    </div>
+    <h1 style="font-size: 300%; color: blue; font-weight:bold; margin-left:10%;">Rese</h1>
 </header>
 
 <body>

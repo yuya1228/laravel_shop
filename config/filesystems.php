@@ -73,4 +73,12 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    'disks' => [
+    'admin' => [
+        'driver' =>'local',
+        'root' => public_path('uploads'),
+        'visibility' =>'public',
+        'url' => env('APP_URL').'/uploads',
+    ],
+],
 ];
