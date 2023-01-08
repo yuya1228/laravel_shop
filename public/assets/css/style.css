@@ -457,6 +457,11 @@ reserve_container {
         height: 5%;
     }
 
+    .shop_image {
+        width: 70%;
+        margin-left: 13%;
+    }
+
     .menu {
         position: fixed;
         top: 0;
@@ -484,14 +489,17 @@ reserve_container {
         width: 100%;
     }
 
-    /*ログイン　会員登録ページ*/
+    .reserve_start {
+        position: absolute;
+        top: 20%;
+
+    }
+
     .reserve {
         width: 80%;
         height: 450px;
-    }
-
-    .reserve input {
-        width: 90%;
+        margin-top: 10%;
+        position: relative;
     }
 
     .reserve_start {

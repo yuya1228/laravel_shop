@@ -21,15 +21,14 @@ class UserController extends Controller
         ->join('genres', 'shops.genre_id', '=', 'genres.id')->get();
         $like = $query->get();
 
-        // $like = Like::where('user_id',\Auth::user()->id)->get();
         $shop_users = Shop_user::where('user_id', \Auth::user()->id)->get();
 
         return view('user.mypage',compact('shop_users','like'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        $shop_users = Shop_user::find($request->user_id);
+        $shop_users = Shop_user::find($id);
         $shop_users->update([
             "date_start" => $request->date_start,
             "time_start" => $request->time_start,

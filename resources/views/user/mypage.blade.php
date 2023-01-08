@@ -30,7 +30,7 @@
                     </form>
                 </div>
 
-                <form action=" {{ route('update') }}" method="post">
+                <form action=" {{ route('update',$shop_user->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <table class="reserve_status">
@@ -53,18 +53,6 @@
                         <tr>
                             <th>予約日時変更</th>
                             <td><input type="submit" value="予約更新"></td>
-                        </tr>
-                        <tr>
-                            <th>お支払い</th>
-                            <td>
-                                <form action="{{ asset('pay') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
-                                        data-amount="100" data-name="Stripe決済デモ" data-label="決済" data-description="これはデモ決済です"
-                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
-                                    </script>
-                                </form>
-                            </td>
                         </tr>
                     </table>
                 </form>

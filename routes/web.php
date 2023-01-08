@@ -22,7 +22,7 @@ Route::get('auth/thanks', [RegisteredUserController::class, 'thanks'])->name('th
 
 //マイページ
 Route::get('/mypage', [UserController::class, 'mypage'])->middleware(['auth'])->name('user.mypage');
-Route::put('/update',[UserController::class,'update'])->name('update');
+Route::put('/update{id}',[UserController::class,'update'])->name('update');
 Route::post('destroy{id}',[UserController::class,'destroy'])->name('reserve.destroy');
 
 //お気に入り機能
