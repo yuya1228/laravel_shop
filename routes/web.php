@@ -28,7 +28,9 @@ Route::post('destroy{id}',[UserController::class,'destroy'])->name('reserve.dest
 //お気に入り機能
 Route::post('/like/{shops}', [LikeController::class, 'like'])->middleware(['auth'])->name('like');
 Route::post('/unlike/{shops}', [LikeController::class, 'unlike'])->middleware(['auth'])->name('unlike');
-Route::get('/like',[LikeController::class,'show']);
+
+//決済機能
+Route::post('/pay',[PaymentController::class,'pay']);
 
 //メール送信機能
 Route::get('/mail/send',[MailController::class,'send']);

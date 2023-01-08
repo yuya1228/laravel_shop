@@ -49,13 +49,13 @@
                 <a href="{{ route('shops.detail', $item->id) }}"><button class="shop_detail">詳しく見る</button></a>
 
                 <span class="like_button">
-                    <form action="{{ route('unlike',['id =>$like->id'])}}" method="POST">
+                    <form action="{{ route('unlike',$item)}}" method="POST">
                         @csrf
                         <input type="submit" name="shop_id" value="&#xf004;" class="fas btn btn-success"
                             style="color: gray; border:none; font-size:30px; background:white;">
                     </form>
 
-                    <form action="{{ route('like',['id =>$like->id'])}}" method="POST">
+                    <form action="{{ route('like',$item->id)}}" method="POST">
                         @csrf
                         <input type="submit" name="shop" value="&#xf004;" class="fas btn btn-danger"
                             style="color: red; border:none; font-size:30px; background:white;">

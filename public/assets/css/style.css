@@ -64,6 +64,7 @@ header {
     transform: translateX(0);
 }
 
+/* ホームページ */
 .shop_title {
     margin: 0;
     padding: 0;
@@ -137,6 +138,7 @@ h3 {
     align-items: center;
 }
 
+/* 登録完了ページ */
 .shop_box {
     box-shadow: 4px 4px 4px rgb(185, 185, 185);
     background-color: white;
@@ -189,6 +191,7 @@ h3 {
     box-shadow: 5px 5px 5px rgb(196, 195, 195);
 }
 
+/* 詳細ページ */
 .detail_container {
     display: flex;
     margin-left: 5%;
@@ -280,9 +283,48 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border: none;
 }
 
+/* マイページ */
 .information_title {
-    margin-top: 10%;
-    ;
+    margin-left: 5%;
+}
+
+.like_reserve {
+    display: flex;
+}
+
+.reserve_menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5%;
+}
+
+.reserve_box {
+    box-shadow: 4px 4px 4px rgb(185, 185, 185);
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    width: 22%;
+    margin: 1%;
+    padding-bottom: 1%;
+}
+
+reserve_container {
+    position: relative;
+}
+
+.reserve_box img {
+    width: 100%;
+    height: 185px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.reserve_delete {
+    background-color: rgb(57, 57, 255);
+   position: absolute;
+    border: none;
+    outline: none;
+    margin-left: 23%;
+    bottom: 63.5%;
 }
 
 .information {
@@ -302,6 +344,25 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-weight: lighter;
 }
 
+.login_user {
+    display: inline-block;
+    margin-left: 46.7%;
+}
+
+.like_shops {
+    margin-left: 35%;
+}
+
+.likes_button {
+    margin-left: 35%;
+    margin-top: 4%;
+}
+
+.shops_button {
+    display: flex;
+    align-items: center;
+}
+
 .reserve_status {
     margin-left: 5%;
     border-spacing: 10px 15px;
@@ -318,6 +379,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     ;
 }
 
+/* 店舗評価ページ */
 .rate-form {
     display: flex;
     flex-direction: row-reverse;
@@ -348,7 +410,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     color: #ffcc00;
 }
 
+/* レスポンシブデザイン */
 @media screen and (max-width:768px) {
+
+    /* ホームページ */
     h1 {
         margin-left: 20%;
     }
@@ -378,9 +443,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     }
 
     .like_button {
-        margin-left: 60%;
+        margin-left: 50%;
     }
 
+    /* 詳細ページ */
     .shop_detail {
         font-size: 15px;
         margin-left: 30%;
@@ -406,7 +472,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     }
 
     .detail_container {
-        margin-left: 20%;
+        display: flex;
+        flex-direction: column;
     }
 
     .detail_title h1 {
@@ -417,8 +484,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         width: 100%;
     }
 
+    /*ログイン　会員登録ページ*/
     .reserve {
-        width: 100%;
+        width: 80%;
         height: 450px;
     }
 
@@ -441,5 +509,67 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
     .register_message {
         margin-right: 30%;
+    }
+
+    /* マイページ */
+
+    .information {
+        width: 60%;
+        margin: auto;
+    }
+
+    .like_reserve {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .information_title {
+        margin: auto;
+    }
+
+    .login_user {
+        margin-left: 40%;
+    }
+
+    .reserve_menu {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .reserve_delete {
+        position: absolute;
+        bottom: 97.3%;
+        right: 30%;
+    }
+
+    .reserve_box {
+        width: 50%;
+        height: 400px;
+        margin-top: 10%;
+        left: 15%;
+        position: relative;
+    }
+
+    .likes_button {
+        position: absolute;
+        top: 70%;
+        margin-left: 30%;
+        right: 10%;
+    }
+
+    .like_shops {
+        margin: auto;
+        top: 85%;
+        left: 43%;
+        position: absolute;
+    }
+
+    .review_shop {
+        margin-left: 15%;
+    }
+
+    .shops_button {
+        margin-top: 8%;
     }
 }

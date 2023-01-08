@@ -2,34 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Shop;
 use App\Models\Shop_user;
 use App\Models\Like;
 
 class UserController extends Controller
 {
-    public function mypage(Request $id)
+    public function mypage()
     {
-        $query = Shop::query();
+        $query = Shop_user::query();
+        $query->join('shops', 'shop_users.shop_id', '=', 'shops.id')->get();
+        $shop_users = $query->get();
 
-        $query->join('areas', 'shops.area_id', '=', 'areas.id')
+        $query = Like::query();
+        $query->join('shops','likes.shop_id', '=', 'shops.id')
+        ->join('areas', 'shops.area_id', '=', 'areas.id')
         ->join('genres', 'shops.genre_id', '=', 'genres.id')->get();
+        $like = $query->get();
 
-        $items = $query->get();
+        // $like = Like::where('user_id',\Auth::user()->id)->get();
+        $shop_users = Shop_user::where('user_id', \Auth::user()->id)->get();
 
-        $like = Like::where('user_id',\Auth::user()->id)->get();
-
-        $shop_users = Shop_user::where('user_id',\Auth::user()->id)->get();
-        return view('user.mypage',compact('items','shop_users','like'));
-    }
-
-    public function destroy($id)
-    {
-        $shop_users = Shop_user::find($id);
-        $shop_users->delete();
-
-        return redirect()->route('user.mypage');
+        return view('user.mypage',compact('shop_users','like'));
     }
 
     public function update(Request $request)
@@ -42,5 +37,13 @@ class UserController extends Controller
         ]);
 
         return redirect()->route("user.mypage");
+    }
+
+    public function destroy($id)
+    {
+        $shop_users = Shop_user::find($id);
+        $shop_users->delete();
+
+        return redirect()->route('user.mypage');
     }
 }
